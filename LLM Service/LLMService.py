@@ -2,7 +2,6 @@ import uvicorn
 import torch
 from fastapi import FastAPI
 from pydantic import BaseModel
-import time
 from logger import logtool
 from LLMLawSageGGUF import query_response
 
@@ -33,15 +32,7 @@ async def LAW_SAGE_llamacpp_request(query_item: QueryItem):
         return {"response": "Auth failed!"}
     
 
-@app.post("/RAG")
-async def RAG_request(query_item: QueryItem):
-    if query_item.auth_token == "ISAUodiuIAU21":
-        return {
-            "prompt": query_item.prompt,
-            "response" : """The Indian legal system addresses cases of online harassment and cyberbullying through various laws and regulations. The Information Technology Act, 2000, and its subsequent amendments provide legal provisions to tackle cybercrimes, including online harassment and cyberbullying. Additionally, the Indian Penal Code contains sections related to offenses such as defamation, stalking, and harassment, which can be applied to online behavior. Law enforcement agencies investigate such cases, and offenders can face penalties under thes elaws. \nReferences:\n- Information Technology Act, 2000\n- Indian Penal Code"""
-        }
-    else:
-        return {"message": "Auth failed!"}
+
     
 @app.post("/LAW-SAGE")
 async def LAW_SAGE_request(query_item: QueryItem):
@@ -63,4 +54,4 @@ async def read_root():
 
 
 if __name__ == '__main__':
-    uvicorn.run(app, port=8001, host='192.168.1.4')
+    uvicorn.run(app, port=8001, host='192.168.1.6')

@@ -1,2 +1,5 @@
 LawSageServerEnv/
+LawSageServerEnvLinux/
 LLM Service/models
+RAG Service/models
+RAG Service/dataset/State Acts Legislation of India
